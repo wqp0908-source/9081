@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動物之家參訪記 - 生命教育課</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #FDFBF7; /* 溫暖的米白色背景 */
+        }
+
+        /* 自定義動畫 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* 隱藏元素但保留結構以便動畫過渡 */
+        .story-section {
+            display: none;
+        }
+        
+        .story-section.active {
+            display: block;
+        }
+
+        .paw-bg {
+            background-image: radial-gradient(#F3E8E0 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="paw-bg min-h-screen flex flex-col text-gray-800">
+
+    <!-- 頂部標題區 -->
+    <header class="text-center py-10 px-4">
+        <div class="inline-block bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-bold mb-4 tracking-wider">
+            📝 週末作業分享
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold text-amber-800 mb-3">動物之家參訪記</h1>
+        <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            週末假日，我們一家四口——爸爸、媽媽、妹妹和我，決定前往動物之家，探望那些等待歸屬的毛小孩。
+        </p>
+    </header>
+
+    <!-- 主要內容區 -->
+    <main class="flex-grow flex items-center justify-center px-4 pb-12">
+        <div class="bg-white max-w-3xl w-full rounded-3xl shadow-xl overflow-hidden border border-orange-50">
+            
+            <!-- 進度指示器 (Tabs) -->
+            <div class="flex border-b border-gray-100 bg-orange-50/50">
+                <button onclick="goToStep(0)" class="tab-btn flex-1 py-4 text-sm font-medium text-gray-500 hover:text-amber-700 transition-colors border-b-2 border-transparent focus:outline-none" id="tab-0">
+                    1. 抵達
+                </button>
+                <button onclick="goToStep(1)" class="tab-btn flex-1 py-4 text-sm font-medium text-gray-500 hover:text-amber-700 transition-colors border-b-2 border-transparent focus:outline-none" id="tab-1">
+                    2. 幼貓房
+                </button>
+                <button onclick="goToStep(2)" class="tab-btn flex-1 py-4 text-sm font-medium text-gray-500 hover:text-amber-700 transition-colors border-b-2 border-transparent focus:outline-none" id="tab-2">
+                    3. 狗狗宿舍
+                </button>
+                <button onclick="goToStep(3)" class="tab-btn flex-1 py-4 text-sm font-medium text-gray-500 hover:text-amber-700 transition-colors border-b-2 border-transparent focus:outline-none" id="tab-3">
+                    4. 歸途
+                </button>
+            </div>
+
+            <!-- 卡片內容區 -->
+            <div class="p-8 md:p-12 min-h-[300px] flex items-center relative">
+                
+                <!-- Section 1: 抵達動物之家 -->
+                <div class="story-section active w-full" id="section-0">
+                    <div class="text-amber-600 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">抵達動物之家</h2>
+                    <p class="text-lg text-gray-600 leading-loose">
+                        剛踏進動物之家的大門，一股混雜著動物氣味與消毒水的濃烈氣味便撲鼻而來。這股味道雖然稱不上好聞，卻真實地提醒著我們，這裡收容了無數曾經流浪、無家可歸的生命。
+                    </p>
+                </div>
+
+                <!-- Section 2: 幼貓房 -->
+                <div class="story-section w-full" id="section-1">
+                    <div class="text-orange-400 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">幼貓房</h2>
+                    <p class="text-lg text-gray-600 leading-loose">
+                        我們首先來到了幼貓專屬的房間，小小的空間裡待了不下十隻幼貓。牠們有的互相依偎取暖，有的隔著籠子好奇地向外張望，那純真無邪的雙眼令人不禁心生憐惜，也祈禱牠們能早日遇見疼愛自己的主人。
+                    </p>
+                </div>
+
+                <!-- Section 3: 狗狗宿舍 -->
+                <div class="story-section w-full" id="section-2">
+                    <div class="text-yellow-600 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">狗狗宿舍</h2>
+                    <p class="text-lg text-gray-600 leading-loose">
+                        接著，我們走向了狗狗宿舍。與貓咪房的寧靜截然不同，這裡的氣氛顯得躁動許多。隔著玻璃窗，幾隻狗狗看似凶猛地對著我們狂吠。然而，仔細觀察牠們不安的來回踱步，我才漸漸明白，那震耳欲聾的吠叫聲背後，或許隱藏著對人類的防備，抑或是渴望被看見、被帶回家的焦急期盼。
+                    </p>
+                </div>
+
+                <!-- Section 4: 踏上歸途 -->
+                <div class="story-section w-full" id="section-3">
+                    <div class="text-red-400 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">踏上歸途</h2>
+                    <p class="text-lg text-gray-600 leading-loose">
+                        伴隨著夕陽餘暉，我們踏上了歸途。這次的動物之家參訪，不僅是一趟簡單的週末出遊，更是一堂寶貴的生命教育課。看著車窗外溫暖的街道，我深刻體會到<strong class="text-amber-700 font-bold">「愛護動物，不離不棄」</strong>不僅是一句口號，更是對每一個生命應有的尊重與責任。
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- 底部控制按鈕 -->
+            <div class="bg-gray-50 p-4 px-8 border-t border-gray-100 flex justify-between items-center">
+                <button onclick="prevStep()" id="prev-btn" class="px-6 py-2 rounded-full text-gray-600 bg-white border border-gray-200 hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm font-medium">
+                    &larr; 上一段
+                </button>
+                
+                <div class="flex space-x-2" id="dots-container">
+                    <!-- 點點指示器由 JS 動態更新 -->
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
+                </div>
+
+                <button onclick="nextStep()" id="next-btn" class="px-6 py-2 rounded-full text-white bg-amber-600 hover:bg-amber-700 transition-colors shadow-sm font-medium">
+                    下一段 &rarr;
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentStep = 0;
+        const totalSteps = 4;
+
+        function updateUI() {
+            // 隱藏所有內容並移除動畫 class
+            document.querySelectorAll('.story-section').forEach((el, index) => {
+                el.classList.remove('active', 'animate-fade-in-up');
+                if (index === currentStep) {
+                    // 使用 setTimeout 確保 DOM 更新後再加入動畫類別，以觸發重新繪製
+                    setTimeout(() => {
+                        el.classList.add('active', 'animate-fade-in-up');
+                    }, 10);
+                }
+            });
+
+            // 更新 Tabs 樣式
+            document.querySelectorAll('.tab-btn').forEach((btn, index) => {
+                if (index === currentStep) {
+                    btn.classList.add('text-amber-700', 'border-amber-500', 'bg-white');
+                    btn.classList.remove('text-gray-500');
+                } else {
+                    btn.classList.remove('text-amber-700', 'border-amber-500', 'bg-white');
+                    btn.classList.add('text-gray-500');
+                }
+            });
+
+            // 更新按鈕狀態
+            document.getElementById('prev-btn').disabled = currentStep === 0;
+            
+            const nextBtn = document.getElementById('next-btn');
+            if (currentStep === totalSteps - 1) {
+                nextBtn.innerHTML = '完成閱讀 <svg class="inline w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+                nextBtn.classList.remove('bg-amber-600', 'hover:bg-amber-700');
+                nextBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+                // 可選：綁定完成後的行為
+                nextBtn.onclick = () => alert('謝謝您閱讀這篇作業！記得愛護動物唷！'); 
+            } else {
+                nextBtn.innerHTML = '下一段 &rarr;';
+                nextBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                nextBtn.classList.add('bg-amber-600', 'hover:bg-amber-700');
+                nextBtn.onclick = nextStep;
+            }
+
+            // 更新底部點點指示器
+            const dotsContainer = document.getElementById('dots-container');
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSteps; i++) {
+                const dot = document.createElement('span');
+                dot.className = `w-2.5 h-2.5 rounded-full transition-colors duration-300 ${i === currentStep ? 'bg-amber-500 scale-125' : 'bg-gray-300'}`;
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps - 1) {
+                currentStep++;
+                updateUI();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                updateUI();
+            }
+        }
+
+        function goToStep(step) {
+            currentStep = step;
+            updateUI();
+        }
+
+        // 初始化
+        updateUI();
+    </script>
+</body>
+</html>
